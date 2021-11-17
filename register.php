@@ -1,14 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-		<title>Title</title>
+		<title>Register</title>
 		<?php include("./header.php"); ?>
-		<?php include("./services/userService.php"); ?>
+		<!-- <?php include("./services/userService.php"); ?> -->
 	</head>
 	<body>
 		<div class="container paper">
 			<h3>Registration form</h3>
 			<?php	
+				session_start();
 				include("errors.php");	
 				$_SESSION['errors'] = array();
 			?>

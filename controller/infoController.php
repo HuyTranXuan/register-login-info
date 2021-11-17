@@ -1,7 +1,8 @@
 <?php
     include("../services/userService.php");
-    $user = $_SESSION['user'];
+    $user = new User();
+
     $q = $_REQUEST["q"];
     $type = $_REQUEST["type"];
-    setInfo($user->id, $q, $type);
+    $user->setInfo($_SESSION['id'], $q, $type);
 ?>
