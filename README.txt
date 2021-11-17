@@ -1,0 +1,1 @@
+In this version I use pg_connect, pg_query, pg_last_error, pg_fetch_row and pg_close to match with ElephantSQL compatibility.
