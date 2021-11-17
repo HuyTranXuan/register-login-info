@@ -2,27 +2,26 @@
 <html lang="en">
 	<head>
 		<title>User info</title>
-
 		<?php 
-		include("./header.php");
-		include("./services/userService.php"); 
-		if(!isset($_SESSION['user'])) {
-			header('location: ./login.php');
-			exit();
-		}
-
-		$user = $_SESSION['user'];
+			include("./header.php");
+			include("./services/userService.php"); 
+			$user = new User;
+			if (!$user->session()){
+				header("location:login.php");
+				exit();
+			}
 		?>
 		<script type="text/javascript" src="function.js"></script>
 	</head>
 	<body>
 		<div class="container paper">
-			<h3>Hello <?php echo $user->email;?></h3>
+			<h3>Hello <?php echo $_SESSION['email'];?></h3>
 			<h3 id="info">Your current info:</h3>
 			<div class="border border-primary margin-small padding-small">
 				<span>
 				<?php
-					$info = findInfoByUserId($user->id);
+					$user = new User;
+					$info = $user->findInfoByUserId($_SESSION['id']);
 					for ($i=2; $i < count($info) ; $i++) { 
 						if($i==2) echo "Street Address: ";
 						elseif($i==3) echo "Phone Number: ";
